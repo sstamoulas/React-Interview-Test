@@ -8,10 +8,6 @@ import ConnectedNodes, { Nodes } from "./Nodes";
 import Node from "../components/Node";
 
 describe("<Nodes />", () => {
-  const actions = {
-    checkNodeStatuses: jest.fn()
-  };
-
   const nodes = {
     list: [
       {
@@ -32,7 +28,6 @@ describe("<Nodes />", () => {
   it("should contain <Node />", () => {
     const wrapper = shallow(
       <Nodes
-        actions={actions}
         nodes={nodes}
       />
     );

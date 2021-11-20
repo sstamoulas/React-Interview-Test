@@ -5,10 +5,10 @@ import configureStore from './configureStore';
 describe('Store', () => {
   const nodes = {
     list: [
-      { url: 'a.com', online: false, name: null, loading: false },
-      { url: 'b.com', online: false, name: null, loading: false },
-      { url: 'c.com', online: false, name: null, loading: false },
-      { url: 'd.com', online: false, name: null, loading: false }
+      { url: 'a.com', online: false, name: null, loading: false, blocks: [] },
+      { url: 'b.com', online: false, name: null, loading: false, blocks: [] },
+      { url: 'c.com', online: false, name: null, loading: false, blocks: [] },
+      { url: 'd.com', online: false, name: null, loading: false, blocks: [] }
     ]
   };
 
@@ -27,16 +27,17 @@ describe('Store', () => {
       { type: ActionTypes.CHECK_NODE_STATUS_SUCCESS, node: nodes.list[0], res: {node_name: 'zeta'} },
       { type: ActionTypes.CHECK_NODE_STATUS_SUCCESS, node: nodes.list[0], res: {node_name: 'eta'} },
       { type: ActionTypes.CHECK_NODE_STATUS_SUCCESS, node: nodes.list[0], res: {node_name: 'theta'} },
+      { type: ActionTypes.CHECK_NODE_BLOCK_SUCCESS, node: nodes.list[1], res: {data: ['Hello', 'World']}}
     ];
     actions.forEach(action => store.dispatch(action));
 
     const actual = store.getState();
     const expected = {
       list: [
-        { url: 'a.com', online: true, name: 'theta', loading: false },
-        { url: 'b.com', online: true, name: 'epsilon', loading: false },
-        { url: 'c.com', online: true, name: 'delta', loading: false },
-        { url: 'd.com', online: false, name: null, loading: false }
+        { url: 'a.com', online: true, name: 'theta', loading: false, blocks: [] },
+        { url: 'b.com', online: true, name: 'epsilon', loading: false, blocks: ['Hello', 'World'] },
+        { url: 'c.com', online: true, name: 'delta', loading: false, blocks: [] },
+        { url: 'd.com', online: false, name: null, loading: false, blocks: [] },
       ]
     };
 

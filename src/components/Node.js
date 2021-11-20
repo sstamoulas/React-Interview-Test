@@ -11,9 +11,11 @@ import {
 } from "@material-ui/core";
 import colors from "../constants/colors";
 import Status from "./Status";
+import Blocks from "./../containers/Blocks";
 
 const Node = ({ node, expanded, toggleNodeExpanded }) => {
   const classes = useStyles();
+
   return (
     <Accordion
       elevation={3}
@@ -46,7 +48,14 @@ const Node = ({ node, expanded, toggleNodeExpanded }) => {
         </Box>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>Blocks go here</Typography>
+        <Typography className={classes.width}>
+        {
+          node.online ?
+            <Blocks node={node} />
+          :
+            <div>The Node is currently offline and cannot retrieve the blocks.</div>
+        }
+        </Typography>
       </AccordionDetails>
     </Accordion>
   );
@@ -96,6 +105,9 @@ const useStyles = makeStyles((theme) => ({
     color: colors.faded,
     lineHeight: 2,
   },
+  width: {
+    flexGrow: "1",
+  }
 }));
 
 Node.propTypes = {

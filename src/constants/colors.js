@@ -8,6 +8,7 @@ const colors = {
   contentBackground: "#f8f8f8",
   border: "#aaaaaa",
   white: "#ffffff",
+  grey: "#E0E0E0",
 };
 
 export default colors;

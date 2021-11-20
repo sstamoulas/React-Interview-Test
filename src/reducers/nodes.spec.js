@@ -11,13 +11,15 @@ describe('Reducers::Nodes', () => {
   const nodeA = {
     url: 'http://localhost:3002',
     online: false,
-    name: null
+    name: null,
+    blocks: []
   };
 
   const nodeB = {
     url: 'http://localhost:3003',
     online: false,
-    name: null
+    name: null,
+    blocks: []
   };
 
   it('should set initial state by default', () => {
@@ -84,6 +86,25 @@ describe('Reducers::Nodes', () => {
           ...nodeA,
           online: false,
           name: 'alpha',
+          loading: false
+        },
+        nodeB
+      ]
+    };
+
+    expect(reducer(appState, action)).toEqual(expected);
+  });
+
+  it('should handle CHECK_NODE_BLOCK_SUCCESS', () => {
+    const appState = {
+      list: [nodeA, nodeB]
+    };
+    const action = { type: ActionTypes.CHECK_NODE_BLOCK_SUCCESS, node: nodeA, res: { data: ['Hello', 'World']}};
+    const expected = {
+      list: [
+        {
+          ...nodeA,
+          blocks: ['Hello', 'World'],
           loading: false
         },
         nodeB

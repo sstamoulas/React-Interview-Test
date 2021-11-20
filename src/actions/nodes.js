@@ -36,7 +36,9 @@ export function checkNodeStatus(node) {
 
       const json = await res.json();
 
-      dispatch(checkNodeStatusSuccess(node, json));
+      await dispatch(checkNodeStatusSuccess(node, json));
+
+      return node;
     } catch (err) {
       dispatch(checkNodeStatusFailure(node));
     }
@@ -45,8 +47,10 @@ export function checkNodeStatus(node) {
 
 export function checkNodeStatuses(list) {
   return (dispatch) => {
-    list.forEach((node) => {
-      dispatch(checkNodeStatus(node));
+    let nodes = list.map(async (node) => {
+      return await dispatch(checkNodeStatus(node));
     });
+
+    return Promise.all(nodes);
   };
 }

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Blocks /> should match snapshot 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root-4 makeStyles-root-1"
+  >
+    <div
+      className="makeStyles-index-3"
+    >
+      001
+    </div>
+    <div
+      className="makeStyles-content-2"
+    >
+      The Human Torch
+    </div>
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root-5 makeStyles-root-1"
+  >
+    <div
+      className="makeStyles-index-3"
+    >
+      002
+    </div>
+    <div
+      className="makeStyles-content-2"
+    >
+      is denied
+    </div>
+  </div>,
+  <div
+    className="MuiBox-root MuiBox-root-6 makeStyles-root-1"
+  >
+    <div
+      className="makeStyles-index-3"
+    >
+      003
+    </div>
+    <div
+      className="makeStyles-content-2"
+    >
+      a bank loan
+    </div>
+  </div>,
+]
+`;
